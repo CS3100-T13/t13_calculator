@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+private slots:
+    void change_text_press_released();
 };
 
 #endif // MAINWINDOW_H
