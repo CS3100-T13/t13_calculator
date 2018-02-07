@@ -26,13 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    notificationcenter.cpp
+    notificationcenter.cpp \
     model.cpp
 
 HEADERS += \
         mainwindow.h \
     notificationsubscriber.h \
-    notificationcenter.h
+    notificationcenter.h \
     model.h
 
 FORMS += \
