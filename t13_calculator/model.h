@@ -11,7 +11,7 @@ public:
     model();
     string get_equation();
     void add_digit(const double new_digit);
-    void parse_string(const MUP_STRING_TYPE a_str);
+    static void parse_string(const MUP_STRING_TYPE a_str);
 
 private:
     string m_equation;
