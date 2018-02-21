@@ -1,5 +1,6 @@
 #include "model.h"
 #include "muParser.h"
+#include "muParserError.h"
 #include <iostream>
 #include <string>
 #include <cstdio>
@@ -25,14 +26,18 @@ void model::parse_string(const MUP_STRING_TYPE a_str)
 {
 
     using namespace mu;
-    try{
     Parser p;
     p.SetExpr(a_str);
+    try{
     cout << p.Eval() << endl;
     }
 
     catch(Parser::exception_type &e)
     {
+        std::cout << (e.GetToken()).c_str() << std::endl;
         std::cout << (e.GetMsg()).c_str() << std::endl;
+
+
     }
+
 }

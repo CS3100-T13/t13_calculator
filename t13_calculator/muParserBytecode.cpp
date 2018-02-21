@@ -162,10 +162,12 @@ namespace mu
     case cmMUL:  x = x * y;  m_vRPN.pop_back();  break;
     case cmDIV: 
 
-#if defined(MUP_MATH_EXCEPTIONS)
+//#if defined(MUP_MATH_EXCEPTIONS)
         if (y==0)
-          throw ParserError(ecDIV_BY_ZERO, _T("0"));
-#endif
+         throw ParserError(ecDIV_BY_ZERO, _T("0"));
+//#endif
+
+        std::cout << "hi" << std::endl;
 
         x = x / y;   
         m_vRPN.pop_back();
