@@ -1,2 +1,4 @@
 build*/*
-*.pro.*
+.pro.*
+13_calculator.pro.user.*
+
