@@ -28,12 +28,14 @@ SOURCES += \
         mainwindow.cpp \
     notificationcenter.cpp \
     model.cpp
+    modelexample.cpp
 
 HEADERS += \
         mainwindow.h \
     notificationsubscriber.h \
     notificationcenter.h \
     model.h
+    modelexample.h
 
 FORMS += \
         mainwindow.ui

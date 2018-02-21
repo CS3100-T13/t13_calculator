@@ -54,7 +54,7 @@ background-color : white;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">/* (Clear,+/-,%,. buttons) Unary Operations Buttons Stylesheet */
+     <string notr="true">/* (Clear,+/-,(,),. buttons) Unary Operations Buttons Stylesheet */
 
 QPushButton {
   background-color: rgb(215, 215, 215);
@@ -94,58 +94,6 @@ QPushButton:pressed {
     </property>
     <property name="text">
      <string>/</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_percent">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>60</y>
-      <width>61</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">/* (Clear,+/-,%,. buttons) Unary Operations Buttons Stylesheet */
-
-QPushButton {
-  background-color: rgb(215, 215, 215);
-  border: 1px solid gray;
-}
-QPushButton:pressed {
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #BEBEBE, stop: 1 #D7D7D7);
-}
-/* End Unary Operations Buttons Stylesheet */</string>
-    </property>
-    <property name="text">
-     <string>%</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_plusMinus">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>60</y>
-      <width>61</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">/* (Clear,+/-,%,. buttons) Unary Operations Buttons Stylesheet */
-
-QPushButton {
-  background-color: rgb(215, 215, 215);
-  border: 1px solid gray;
-}
-QPushButton:pressed {
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #BEBEBE, stop: 1 #D7D7D7);
-}
-/* End Unary Operations Buttons Stylesheet */</string>
-    </property>
-    <property name="text">
-     <string>+/-</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_9">
@@ -495,6 +443,19 @@ QPushButton:pressed {
       <height>61</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string>/* (Clear,+/-,(,),. buttons) Unary Operations Buttons Stylesheet */
+
+QPushButton {
+  background-color: rgb(215, 215, 215);
+  border: 1px solid gray;
+}
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #BEBEBE, stop: 1 #D7D7D7);
+}
+/* End Unary Operations Buttons Stylesheet */</string>
+    </property>
     <property name="text">
      <string>.</string>
     </property>
@@ -504,7 +465,7 @@ QPushButton:pressed {
      <rect>
       <x>0</x>
       <y>300</y>
-      <width>121</width>
+      <width>61</width>
       <height>61</height>
      </rect>
     </property>
@@ -523,6 +484,84 @@ QPushButton:pressed {
     </property>
     <property name="text">
      <string>0</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_openParenthesis">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>60</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">/* (Clear,+/-,(,),. buttons) Unary Operations Buttons Stylesheet */
+
+QPushButton {
+  background-color: rgb(215, 215, 215);
+  border: 1px solid gray;
+}
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #BEBEBE, stop: 1 #D7D7D7);
+}
+/* End Unary Operations Buttons Stylesheet */</string>
+    </property>
+    <property name="text">
+     <string>(</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_closeParenthesis">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>60</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">/* (Clear,+/-,(,),. buttons) Unary Operations Buttons Stylesheet */
+
+QPushButton {
+  background-color: rgb(215, 215, 215);
+  border: 1px solid gray;
+}
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #BEBEBE, stop: 1 #D7D7D7);
+}
+/* End Unary Operations Buttons Stylesheet */</string>
+    </property>
+    <property name="text">
+     <string>)</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_plusMinus">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>300</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">/* (Clear,+/-,(,),. buttons) Unary Operations Buttons Stylesheet */
+
+QPushButton {
+  background-color: rgb(215, 215, 215);
+  border: 1px solid gray;
+}
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #BEBEBE, stop: 1 #D7D7D7);
+}
+/* End Unary Operations Buttons Stylesheet */</string>
+    </property>
+    <property name="text">
+     <string>+/-</string>
     </property>
    </widget>
   </widget>

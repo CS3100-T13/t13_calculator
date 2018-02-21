@@ -2,12 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "modelexample.h"
 
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, public NotificationSubscriber
 {
     Q_OBJECT
 
@@ -15,8 +16,11 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    void notificationRecieved( const NotificationID name );
+
 private:
     Ui::MainWindow *ui;
+    modelExample model;
 /*
 private slots:
     void change_text_press_released();

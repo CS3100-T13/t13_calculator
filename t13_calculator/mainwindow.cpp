@@ -27,7 +27,9 @@ MainWindow::MainWindow(QWidget *parent) :
   connect(ui->pushButton_9,SIGNAL(released()),this,SLOT(digits_pressed()));
 
   connect(ui->pushButton_plusMinus,SIGNAL(released()),this,SLOT(unary_operation_pressed()));
-  connect(ui->pushButton_percent,SIGNAL(released()),this,SLOT(unary_operation_pressed()));
+  connect(ui->pushButton_closeParenthesis,SIGNAL(released()),this,SLOT(unary_operation_pressed()));
+  connect(ui->pushButton_openParenthesis,SIGNAL(released()),this,SLOT(unary_operation_pressed()));
+
 
   connect(ui->pushButton_add,SIGNAL(released()),this,SLOT(binary_operation_pressed()));
   connect(ui->pushButton_subtract,SIGNAL(released()),this,SLOT(binary_operation_pressed()));
@@ -48,7 +50,13 @@ MainWindow::~MainWindow()
   delete ui;
 }
 
+void MainWindow::notificationRecieved( const NotificationID name ) {
+    if ( name == EQUATION_UPDATEED ) {
 
+//        ui->label->setText( model.getEquation() );
+
+    }
+}
 
 //* Slots **********************************************************************/
 
@@ -81,6 +89,7 @@ void MainWindow::digits_pressed()
 
 
   ui->label->setText(newLabel);
+  // model.newDigitEntered( labelNumber );
 }
 
 void MainWindow::on_pushButton_decimal_released()
@@ -103,12 +112,18 @@ void MainWindow::unary_operation_pressed()
     }
 
 
-    if(button->text() == "%")
+    if(button->text() == "(")
     {
-        labelNumber = ui->label->text().toDouble();
-        labelNumber = labelNumber * .01;
-        newLabel = QString::number(labelNumber, 'g', 15);
+     //   labelNumber = (ui->label->text() + button->text());
+        newLabel = button->text();
         ui->label->setText(newLabel);
+
+    }
+
+    if(button->text() == ")")
+    {
+         ui->label->setText(ui->label->text() + ")");
+         newLabel = QString::number(labelNumber,'g',15);
     }
 
 }
@@ -175,3 +190,7 @@ void MainWindow::binary_operation_pressed()
 
     button->setChecked(true);
 }
+
+
+
+
