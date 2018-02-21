@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 #include "notificationcenter.h"
+#include "muParser.h"
+
 using namespace std;
 
 const NotificationID EQUATION_UPDATED = "NOTIFICATION_UPDATED";
@@ -34,6 +36,7 @@ public:
     void add_digit(const double new_digit);
     void mathFunctionEntered( const MathFunction f );
     void specialKeyEntered( const SpecialKey s );
+    static void parse_string(const MUP_STRING_TYPE a_str);
 
 private:
     string m_equation;

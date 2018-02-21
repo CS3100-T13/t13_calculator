@@ -1,4 +1,8 @@
 #include "model.h"
+#include "muParser.h"
+#include <iostream>
+#include <string>
+#include <cstdio>
 
 model::model()
 {
@@ -45,4 +49,21 @@ void model::specialKeyEntered( const SpecialKey s ){
     update_equation();
 
     nc->post( EQUATION_UPDATED );
+}
+
+
+void model::parse_string(const MUP_STRING_TYPE a_str)
+{
+
+    using namespace mu;
+    try{
+    Parser p;
+    p.SetExpr(a_str);
+    cout << p.Eval() << endl;
+    }
+
+    catch(Parser::exception_type &e)
+    {
+        std::cout << (e.GetMsg()).c_str() << std::endl;
+    }
 }
