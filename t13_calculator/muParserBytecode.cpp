@@ -164,10 +164,11 @@ namespace mu
 
 //#if defined(MUP_MATH_EXCEPTIONS)
         if (y==0)
-         throw ParserError(ecDIV_BY_ZERO, _T("0"));
+            throw "Division by zero";
+            //throw ParserError(ecDIV_BY_ZERO, _T("0"));
+
 //#endif
 
-        std::cout << "hi" << std::endl;
 
         x = x / y;   
         m_vRPN.pop_back();
