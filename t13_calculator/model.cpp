@@ -1,9 +1,9 @@
 #include "model.h"
 #include "muParser.h"
-#include "muParserError.h"
 #include <iostream>
 #include <string>
 #include <cstdio>
+#include <cmath>
 
 model::model()
 {
@@ -53,22 +53,22 @@ void model::specialKeyEntered( const SpecialKey s ){
 }
 
 
-void model::parse_string(const MUP_STRING_TYPE a_str)
-{
-
+string model::parse_string(const MUP_STRING_TYPE a_str) {
     using namespace mu;
     Parser p;
     p.SetExpr(a_str);
-    try{
-    cout << p.Eval() << endl;
+    try {
+        double value = p.Eval();
+        if (isinf(value)) {
+            return "Overflow";
+        }
+        return to_string(value);
     }
-
-    catch(Parser::exception_type &e)
-    {
-        std::cout << (e.GetToken()).c_str() << std::endl;
-        std::cout << (e.GetMsg()).c_str() << std::endl;
-
-
+    catch(char* c) { //for division by zero errors
+        string s(c);
+        return c;
     }
-
+    catch(Parser::exception_type &e) { //for bad input errors
+        return "Invalid input";
+    }
 }
