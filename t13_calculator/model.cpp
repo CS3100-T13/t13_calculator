@@ -64,7 +64,8 @@ string model::parse_string(const MUP_STRING_TYPE a_str) {
         }
         return to_string(value);
     }
-    catch(char* c) { //for division by zero errors
+    catch(char const* c)
+    {
         string s(c);
         return c;
     }
