@@ -10,9 +10,13 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
+
     /*
+     wstring divBy0 = L"3/0";
+
      MUP_STRING_TYPE mathString;
-     mathString = _T("3/0");
+     mathString = divBy0;
+
      string toPrint = model::parse_string(mathString);
      cout << toPrint << endl;
     */
