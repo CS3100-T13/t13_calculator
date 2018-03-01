@@ -37,6 +37,7 @@ void model::add_digit(const double new_digit)
 
 void model::mathFunctionEntered( const MathFunction f ) {
     funcs.push_back( f );
+    //funcs.append( f );
 
     update_equation();
 
@@ -45,6 +46,7 @@ void model::mathFunctionEntered( const MathFunction f ) {
 
 void model::specialKeyEntered( const SpecialKey s ){
     specials.push_back( s );
+    //specials.append( s );
 
     update_equation();
 

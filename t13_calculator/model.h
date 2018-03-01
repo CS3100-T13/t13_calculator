@@ -44,7 +44,9 @@ private:
     double m_result;
     NotificationCenter *nc;
     vector<MathFunction> funcs;
+    //string funcs;
     vector<SpecialKey> specials;
+    //string specials;
 
 };
 
