@@ -2,17 +2,24 @@
 #include "model.h"
 #include <QApplication>
 
+
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
 
-    MUP_STRING_TYPE mathString;
 
-    mathString = _T("6/0");
+    /*
+     wstring divBy0 = L"3/0";
 
-    model::parse_string(mathString);
+     MUP_STRING_TYPE mathString;
+     mathString = divBy0;
+
+     string toPrint = model::parse_string(mathString);
+     cout << toPrint << endl;
+    */
 
     return a.exec();
 }
