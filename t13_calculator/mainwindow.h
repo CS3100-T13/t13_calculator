@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "modelexample.h"
+#include "model.h"
 
 namespace Ui {
 class MainWindow;
@@ -20,7 +20,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    modelExample model;
+    model mdl;
 /*
 private slots:
     void change_text_press_released();

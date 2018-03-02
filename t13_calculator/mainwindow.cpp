@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "model.h"
 
 double firstNum;
 bool userIsTypingSecondNum = false;
@@ -51,9 +52,9 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::notificationRecieved( const NotificationID name ) {
-    if ( name == EQUATION_UPDATEED ) {
+    if ( name == EQUATION_UPDATED ) {
 
-//        ui->label->setText( model.getEquation() );
+
 
     }
 }
@@ -65,6 +66,7 @@ void MainWindow::digits_pressed()
   QPushButton * button = (QPushButton*)sender();
 
   double labelNumber;
+  double buttonNumber;
   QString newLabel;
 
   if((ui->pushButton_add->isChecked() || ui->pushButton_subtract->isChecked() ||
@@ -86,8 +88,8 @@ void MainWindow::digits_pressed()
            newLabel = QString::number(labelNumber,'g',15);
       }
   }
-
-
+    buttonNumber = (button->text()).toDouble();
+    mdl.add_digit(buttonNumber);
   ui->label->setText(newLabel);
   // model.newDigitEntered( labelNumber );
 }
@@ -105,8 +107,9 @@ void MainWindow::unary_operation_pressed()
 
     if(button->text() == "+/-")
     {
+        mdl.specialKeyEntered(SIGN_SWITCH);
         labelNumber = ui->label->text().toDouble();
-        labelNumber = labelNumber * -1;
+        //labelNumber = labelNumber * -1;
         newLabel = QString::number(labelNumber, 'g', 15);
         ui->label->setText(newLabel);
     }
@@ -114,16 +117,23 @@ void MainWindow::unary_operation_pressed()
 
     if(button->text() == "(")
     {
-     //   labelNumber = (ui->label->text() + button->text());
-        newLabel = button->text();
-        ui->label->setText(newLabel);
+        if(button->text() == '0')
+        {
+            mdl.specialKeyEntered(OPEN_PAREN);
+            newLabel = button->text();
+            ui->label->setText(newLabel);
+        }
 
     }
 
     if(button->text() == ")")
     {
-         ui->label->setText(ui->label->text() + ")");
-         newLabel = QString::number(labelNumber,'g',15);
+        if(button->text() == '0')
+        {
+            mdl.specialKeyEntered(CLOSE_PAREN);
+            newLabel = button->text();
+            ui->label->setText(newLabel);
+        }
     }
 
 }
@@ -141,6 +151,7 @@ void MainWindow::on_pushButton_clear_released()
     userIsTypingSecondNum = false;
 
     ui->label->setText("0");
+    mdl.specialKeyEntered(ALL_CLEAR);
 }
 
 void MainWindow::on_pushButton_equals_released()
@@ -148,35 +159,25 @@ void MainWindow::on_pushButton_equals_released()
     double labelNumber, secondNum;
     QString newLabel;
 
-    secondNum =ui->label->text().toDouble();
+    secondNum = ui->label->text().toDouble();
 
-    if(ui->pushButton_add->isChecked())
+    mdl.specialKeyEntered(EQUALS);
+
+   if(ui->pushButton_add->isChecked())
     {
-        labelNumber = firstNum + secondNum;
-        newLabel = QString::number(labelNumber,'g',15);
-        ui->label->setText(newLabel);
-        ui->pushButton_add->setChecked(false);
+        mdl.mathFunctionEntered(PLUS);
     }
     else if(ui->pushButton_subtract->isChecked())
     {
-        labelNumber = firstNum - secondNum;
-        newLabel = QString::number(labelNumber,'g',15);
-        ui->label->setText(newLabel);
-        ui->pushButton_subtract->setChecked(false);
+        mdl.mathFunctionEntered(MINUS);
     }
     else if(ui->pushButton_multiply->isChecked())
     {
-        labelNumber = firstNum * secondNum;
-        newLabel = QString::number(labelNumber,'g',15);
-        ui->label->setText(newLabel);
-        ui->pushButton_multiply->setChecked(false);
+        mdl.mathFunctionEntered(MULTIPLY);
     }
     else if(ui->pushButton_division->isChecked())
     {
-        labelNumber = firstNum / secondNum;
-        newLabel = QString::number(labelNumber,'g',15);
-        ui->label->setText(newLabel);
-        ui->pushButton_division->setChecked(false);
+        mdl.mathFunctionEntered(DIVIDE);
     }
 
     userIsTypingSecondNum = false;
