@@ -8,6 +8,7 @@
 using namespace std;
 
 const NotificationID EQUATION_UPDATED = "NOTIFICATION_UPDATED";
+const NotificationID RESULT_UPDATED = "RESULT_UPDATED";
 
 enum MathFunction {
     UNDEFINED = 0,
@@ -34,6 +35,7 @@ public:
     model();
     ~model();
     string get_equation();
+    string get_result();
     void add_digit(const double new_digit);
     void mathFunctionEntered( const MathFunction f );
     void specialKeyEntered( const SpecialKey s );

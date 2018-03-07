@@ -53,9 +53,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::notificationRecieved( const NotificationID name ) {
     if ( name == EQUATION_UPDATED ) {
-
-
-
+      // update equation label
+    } else if ( name == RESULT_UPDATED ) {
+      // update digit label (main label)
+      // mailLabel.setText( model.get_result() );
     }
 }
 

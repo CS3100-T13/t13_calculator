@@ -22,6 +22,13 @@ model::~model()
     delete nc;
 }
 
+
+string model::get_result() {
+  string s;
+
+  return s;
+}
+
 string model::get_equation()
 {
     return m_equation;
@@ -104,6 +111,7 @@ void model::specialKeyEntered( const SpecialKey s ){
 
     nc->post( EQUATION_UPDATED );
 }
+
 
 string model::parse_string(const string a_str) {
 
