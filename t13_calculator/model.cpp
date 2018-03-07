@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <cstdio>
+#include <cmath>
 
 model::model()
 {
@@ -37,6 +38,7 @@ void model::add_digit(const double new_digit)
 
 void model::mathFunctionEntered( const MathFunction f ) {
     funcs.push_back( f );
+    //funcs.append( f );
 
     update_equation();
 
@@ -45,25 +47,34 @@ void model::mathFunctionEntered( const MathFunction f ) {
 
 void model::specialKeyEntered( const SpecialKey s ){
     specials.push_back( s );
+    //specials.append( s );
 
     update_equation();
 
     nc->post( EQUATION_UPDATED );
 }
 
+string model::parse_string(const string a_str) {
 
-void model::parse_string(const MUP_STRING_TYPE a_str)
-{
-
+    wstring tempString;
+    tempString.assign(a_str.begin(), a_str.end());
+    MUP_STRING_TYPE stringToEval = tempString;
     using namespace mu;
-    try{
     Parser p;
-    p.SetExpr(a_str);
-    cout << p.Eval() << endl;
+    p.SetExpr(stringToEval);
+    try {
+        double value = p.Eval();
+        if (isinf(value)) {
+            return "Overflow";
+        }
+        return to_string(value);
     }
-
-    catch(Parser::exception_type &e)
+    catch(char const* c)
     {
-        std::cout << (e.GetMsg()).c_str() << std::endl;
+        string s(c);
+        return c;
+    }
+    catch(Parser::exception_type &e) { //for bad input errors
+        return "Invalid input";
     }
 }

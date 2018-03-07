@@ -36,7 +36,7 @@ public:
     void add_digit(const double new_digit);
     void mathFunctionEntered( const MathFunction f );
     void specialKeyEntered( const SpecialKey s );
-    static void parse_string(const MUP_STRING_TYPE a_str);
+    static string parse_string(const string a_str);
 
 private:
     string m_equation;
@@ -44,7 +44,9 @@ private:
     double m_result;
     NotificationCenter *nc;
     vector<MathFunction> funcs;
+    //string funcs;
     vector<SpecialKey> specials;
+    //string specials;
 
 };
 
