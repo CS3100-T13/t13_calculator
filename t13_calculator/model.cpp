@@ -29,7 +29,8 @@ string model::get_equation()
 
 void model::add_digit(const double new_digit)
 {
-    m_result.append(str(new_digit));
+    m_result.append(to_string(new_digit));
+
     if(SIGN_SWITCH)
     {
       if(m_result[1] == '+')
@@ -55,20 +56,20 @@ void model::mathFunctionEntered( const MathFunction f ) {
     switch(f)
     {
       case PLUS:
-        equation.append ('+');
-        QDebug("Plus added to equation.");
+        equation.append ("+");
+        qDebug() << "Plus added to equation.";
         break;
       case MINUS:
-        equation.append ('-');
-        QDebug("Minus added to equation.");
+        equation.append ("-");
+        qDebug() << "Minus added to equation.";
         break;
       case MULTIPLY:
-        equation.append ('*');
-        QDebug("Multiply added to equation.");
+        equation.append ("*");
+        qDebug() << "Multiply added to equation.";
         break;
       case DIVIDE:
-        equation.append ('/');
-        QDebug("Divide added to equation.");
+        equation.append ("/");
+        qDebug() << "Divide added to equation.";
         break;
     }
     update_equation();
@@ -82,20 +83,20 @@ void model::specialKeyEntered( const SpecialKey s ){
     switch(s)
     {
       case EQUALS:
-        equation.append('=');
-        QDebug("Equals added to equation.");
+        equation.append("=");
+        qDebug() << "Equals added to equation.";
         break;
       case OPEN_PAREN:
-        equation.append('(');
-        QDebug("Open Parentheses added to equation.");
+        equation.append("(");
+        qDebug() << "Open Parentheses added to equation.";
         break;
       case CLOSE_PAREN:
-        equation.append(')');
-        QDebug("Close Parantheses added to equation.");
+        equation.append(")");
+        qDebug() << "Close Parantheses added to equation.";
         break;
       case DECIMAL:
-        equation.append('.');
-        QDebug("Decimal point added to equation.");
+        equation.append(".");
+        qDebug() << "Decimal point added to equation.";
         break;
     }
 

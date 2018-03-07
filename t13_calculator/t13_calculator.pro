@@ -27,7 +27,6 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     notificationcenter.cpp \
-    modelexample.cpp \
     model.cpp \
     muParser.cpp \
     muParserBase.cpp \
@@ -42,7 +41,6 @@ HEADERS += \
         mainwindow.h \
     notificationsubscriber.h \
     notificationcenter.h \
-    modelexample.h \
     model.h \
     model.h \
     muParser.h \
