@@ -4,6 +4,7 @@
 #include <string>
 #include <cstdio>
 #include <cmath>
+#include <QDebug>
 
 model::model()
 {
@@ -11,8 +12,9 @@ model::model()
 }
 
 
-void model::update_equation() {
-
+void model::update_equation()
+{
+  parse_string(equation);
 }
 
 model::~model()
@@ -27,8 +29,19 @@ string model::get_equation()
 
 void model::add_digit(const double new_digit)
 {
-    m_result *= 10;
-    m_result += new_digit;
+    m_result.append(str(new_digit));
+    if(SIGN_SWITCH)
+    {
+      if(m_result[1] == '+')
+      {
+        m_result[1] = '-';
+      }
+      else
+      {
+        m_result[1] = '+';
+      }
+    }
+
 
     update_equation();
 
@@ -37,17 +50,54 @@ void model::add_digit(const double new_digit)
 
 
 void model::mathFunctionEntered( const MathFunction f ) {
-    funcs.push_back( f );
-    //funcs.append( f );
-
+    //funcs.push_back( f );
+    //equation.append( f );
+    switch(f)
+    {
+      case PLUS:
+        equation.append ('+');
+        QDebug("Plus added to equation.");
+        break;
+      case MINUS:
+        equation.append ('-');
+        QDebug("Minus added to equation.");
+        break;
+      case MULTIPLY:
+        equation.append ('*');
+        QDebug("Multiply added to equation.");
+        break;
+      case DIVIDE:
+        equation.append ('/');
+        QDebug("Divide added to equation.");
+        break;
+    }
     update_equation();
 
     nc->post( EQUATION_UPDATED );
 }
 
 void model::specialKeyEntered( const SpecialKey s ){
-    specials.push_back( s );
-    //specials.append( s );
+    //specials.push_back( s );
+    //equation.append( s );
+    switch(s)
+    {
+      case EQUALS:
+        equation.append('=');
+        QDebug("Equals added to equation.");
+        break;
+      case OPEN_PAREN:
+        equation.append('(');
+        QDebug("Open Parentheses added to equation.");
+        break;
+      case CLOSE_PAREN:
+        equation.append(')');
+        QDebug("Close Parantheses added to equation.");
+        break;
+      case DECIMAL:
+        equation.append('.');
+        QDebug("Decimal point added to equation.");
+        break;
+    }
 
     update_equation();
 
