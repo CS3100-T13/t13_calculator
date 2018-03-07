@@ -107,10 +107,14 @@ void model::specialKeyEntered( const SpecialKey s ){
 
 string model::parse_string(const string a_str) {
 
-    //wstring tempString;
-   // tempString.assign(a_str.begin(), a_str.end());
-    //MUP_STRING_TYPE stringToEval = tempString;
+#if defined __MINGW32__
+    wstring tempString;
+    tempString.assign(a_str.begin(), a_str.end());
+    MUP_STRING_TYPE stringToEval = tempString;
+#elif defined __clang__
     MUP_STRING_TYPE stringToEval = a_str;
+#endif
+
     using namespace mu;
     Parser p;
     p.SetExpr(stringToEval);
