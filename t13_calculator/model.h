@@ -24,7 +24,8 @@ enum SpecialKey {
     OPEN_PAREN = 2,
     CLOSE_PAREN = 3,
     DECIMAL = 4,
-    SIGN_SWITCH = 5
+    SIGN_SWITCH = 5,
+    BACKSPACE = 6
 };
 
 class model
@@ -41,12 +42,14 @@ public:
 private:
     string m_equation;
     void update_equation();
-    double m_result;
+    double current_digit;
+    string m_result = "(+";
     NotificationCenter *nc;
-    vector<MathFunction> funcs;
+    //vector<MathFunction> funcs;
     //string funcs;
-    vector<SpecialKey> specials;
+    //vector<SpecialKey> specials;
     //string specials;
+    string equation;
 
 };
 
