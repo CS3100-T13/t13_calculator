@@ -104,11 +104,14 @@ void model::specialKeyEntered( const SpecialKey s ){
     nc->post( EQUATION_UPDATED );
 }
 
+string model::parse_string(const string a_str) {
 
-string model::parse_string(const MUP_STRING_TYPE a_str) {
+    wstring tempString;
+    tempString.assign(a_str.begin(), a_str.end());
+    MUP_STRING_TYPE stringToEval = tempString;
     using namespace mu;
     Parser p;
-    p.SetExpr(a_str);
+    p.SetExpr(stringToEval);
     try {
         double value = p.Eval();
         if (isinf(value)) {
